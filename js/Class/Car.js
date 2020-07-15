@@ -9,15 +9,13 @@ class Car {
      * @param {number} initNbPlaces - Le nombre de place de la voiture
      */
     constructor(initRegistration, initColor, initWeight, initPower, initTankCapacity, initNbPlaces) {
-        /** @type {string} */
         let registration = initRegistration;
-        /** @returns {string} */
+        /** @return {string} */
         this.getRegistration = function () {
             return registration;
         }
-        /** @type {string} */
         let color = initColor;
-        /** @returns {string} */
+        /** @return {string} */
         this.getColor = function () {
             return color;
         }
@@ -29,33 +27,28 @@ class Car {
                 color = value;
             }
         }
-        /** @type {number} */
         let weight = initWeight;
-        /** @returns {number} */
+        /** @return {number} */
         this.getWeight = function () {
             return weight;
         }
-        /** @type {number} */
         let power = initPower;
-        /** @returns {number} */
+        /** @return {number} */
         this.getPower = function () {
             return power;
         }
-        /** @type {float} */
         let tankCapacity = initTankCapacity;
-        /** @returns {number} */
+        /** @return {number} */
         this.getTankCapacity = function () {
             return tankCapacity;
         }
-        /** @type {number} */
         let nbPlaces = initNbPlaces;
-        /** @returns {number} */
+        /** @return {number} */
         this.getNbPlaces = function () {
             return nbPlaces;
         }
-        /** @type {number} */
         let levelFuel = 5;
-        /** @returns {number} */
+        /** @return {number} */
         this.getLevelFuel = function () {
             return levelFuel;
         }
@@ -67,9 +60,8 @@ class Car {
                 levelFuel = value;
             }
         }
-        /** @type {boolean} */
         let assured = false;
-        /** @returns {boolean} */
+        /** @return {boolean} */
         this.getAssured = function () {
             return assured;
         }
@@ -81,9 +73,8 @@ class Car {
                 assured = value;
             }
         }
-        /** @type {string} */
         let msg = "Bienvenue à bord. \n";
-        /** @returns {string} */
+        /** @return {string} */
         this.getMsg = function () {
             return msg;
         }
@@ -100,21 +91,13 @@ class Car {
     /**
      * Repeint la voiture.
      * @param {string} color - La nouvelle couleur
-     * Retourne true si le changement de couleur a bien été effectué, false sinon.
-     * @returns {boolean}
      */
     repaint(color) {
-        if (typeof color === "string") {
-            if (color === this.getColor()) {
-                this.setMsg(this.getMsg() + "Vous avez rafraichit la couleur de votre voiture.\n");
-            } else {
-                this.setColor(color);
-                this.setMsg(this.getMsg() + "Merci d'avoir changé la couleur de votre voiture.\n");
-            }
-            return true;
+        if (color === this.getColor()) {
+            this.setMsg(this.getMsg() + "Vous avez rafraichit la couleur de votre voiture.\n");
         } else {
-            throw new Error("Veuillez entrer une chaine de caractère pour l'attribut color.");
-            return false;
+            this.setColor(color);
+            this.setMsg(this.getMsg() + "Vous avez changé la couleur de votre voiture.\n");
         }
     }
 
@@ -122,7 +105,7 @@ class Car {
      * Remmet de l'essence dans le réservoir.
      * @param {number} quantity
      * Retourne le niveau d'essence après remplissage.
-     * @returns {number}
+     * @return {number}
      */
     refuel(quantity) {
         if (quantity <= this.getTankCapacity() - this.getLevelFuel()) {
@@ -151,7 +134,7 @@ class Car {
 
     /**
      * Retourne toutes les caractéristiques de la voiture.
-     * @returns {string}
+     * @return {string}
      */
     toString() {
         return "Caractéristiques de la voiture : \n" +
@@ -162,15 +145,15 @@ class Car {
             "Capacité du réservoir : " + this.getTankCapacity() + " Litres" + "\n" +
             "Nombre de places : " + this.getNbPlaces() + "\n" +
             "Niveau d'essence : " + this.getLevelFuel() + " Litres" + "\n" +
-            "Assuré ? " + (this.getAssured()? "Oui": "Non");
+            "Assuré ? " + (this.getAssured() ? "Oui" : "Non");
     }
 
     /**
      * Calcule la consommation totale d'un trajet
      * @param distance - La distance parcouru en Km
-     * @param meanSpeed - La vitesse moyenne en Litres / 100 Km
+     * @param meanSpeed - La vitesse moyenne en Km / Heures
      * Retourne la valeur de cette consommation
-     * @returns {number}
+     * @return {number}
      */
     consumptionTotal(distance, meanSpeed) {
         let consumptionPer100Km;
