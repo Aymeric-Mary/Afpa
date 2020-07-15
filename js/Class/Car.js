@@ -11,7 +11,7 @@ class Car {
     constructor(initRegistration, initColor, initWeight, initPower, initTankCapacity, initNbPlaces) {
         /** @type {string} */
         let registration = initRegistration;
-        /** @returns {number} */
+        /** @returns {string} */
         this.getRegistration = function () {
             return registration;
         }
